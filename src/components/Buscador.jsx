@@ -20,13 +20,11 @@ function Buscador() {
   return (
     <>
       <form onSubmit={submitHandler}>
-        <label>
-          <input
-            type="text"
-            name="keyword"
-            placeholder="Escribe una palabra clave..."
-          ></input>
-        </label>
+        <input
+          type="text"
+          name="keyword"
+          placeholder="Escribe una palabra clave..."
+        ></input>
         <button type="submit">Ingresar</button>
       </form>
     </>

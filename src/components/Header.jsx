@@ -16,8 +16,11 @@ function Header() {
             <li>
               <Link to="/contacto">Contacto</Link>
             </li>
+            <li>
+              <Link to="/favoritos">Favs</Link>
+            </li>
           </ul>
-          <Buscador/>
+          <Buscador />
         </nav>
       </header>
     </>

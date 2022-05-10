@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import swAlert from "@sweetalert/with-react";
 
-function Listado() {
-  
+function Listado(props) {
   // useEffect(() => {
   //   if (token === null) {
   //     return navigate("/");
@@ -14,7 +13,6 @@ function Listado() {
   //     !token && navigate("/");
   //   }
   // }, []);
-
   let token = sessionStorage.getItem("token");
   const [moviesList, setMoviesList] = useState([]);
   useEffect(() => {
@@ -45,6 +43,13 @@ function Listado() {
                   className="card-img-top"
                   alt="Imagen"
                 />
+                <button
+                  className="btn-fav"
+                  onClick={props.addOrRemoveFromFavs}
+                  data-movie-id={oneMovie.id}
+                >
+                  ❤️
+                </button>
                 <div className="card-body">
                   <h5 className="card-title">{oneMovie.title}</h5>
                   <p className="card-text">{oneMovie.overview}</p>
