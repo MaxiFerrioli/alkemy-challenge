@@ -1,22 +1,19 @@
-import { useState, useEffect } from "react";
+import { Link, Navigate } from "react-router-dom";
 
-function Favoritos() {
-  const [favorites, setFavorites] = useState([]);
-
-  useEffect(() => {
-    const favsInLocal = localStorage.getItem("favs");
-    // console.log(favsInLocal);
-    if (favsInLocal != null) {
-      const favsArray = JSON.parse(favsInLocal);
-      setFavorites(favsArray);
-    }
-  }, []);
+function Favoritos(props) {
+  let token = sessionStorage.getItem("token");
 
   return (
     <>
+      {!token && <Navigate to="/" />}
       <h2>Tus favoritos</h2>
+      {!props.favorites.length && (
+        <div className="text-danger col-12">
+          El almacenamiento de favoritos esta vacio!
+        </div>
+      )}
       <div className="row">
-        {favorites.map((oneMovie, idx) => {
+        {props.favorites.map((oneMovie, idx) => {
           return (
             <div className="col-3" key={idx}>
               <div className="card">
@@ -25,22 +22,22 @@ function Favoritos() {
                   className="card-img-top"
                   alt="Imagen"
                 />
-                {/* <button
+                <button
                   className="btn-fav"
                   onClick={props.addOrRemoveFromFavs}
                   data-movie-id={oneMovie.id}
                 >
-                  ❤️
-                </button> */}
+                  💔
+                </button>
                 <div className="card-body">
                   <h5 className="card-title">{oneMovie.title}</h5>
                   <p className="card-text">{oneMovie.overview}</p>
-                  {/* <Link
+                  <Link
                     to={`/detalle?movieID=${oneMovie.id}`}
                     className="btn btn-primary"
                   >
                     Ver detalle
-                  </Link> */}
+                  </Link>
                 </div>
               </div>
             </div>

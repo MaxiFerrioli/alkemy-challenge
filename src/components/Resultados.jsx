@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import swAlert from "@sweetalert/with-react";
 import axios from "axios";
 
 function Resultados() {
+  let token = sessionStorage.getItem("token");
   let query = new URLSearchParams(window.location.search);
   let keyword = query.get("keyword");
 
@@ -11,7 +12,9 @@ function Resultados() {
 
   useEffect(() => {
     const endPoint = `https://api.themoviedb.org/3/search/movie?api_key=e79dfe9fcb65825a15e344de030f4422&language=es-ES&query=${keyword}`;
-    axios.get(endPoint).then((response) => {
+    axios
+      .get(endPoint)
+      .then((response) => {
         const moviesArray = response.data.results;
         if (moviesArray.length === 0) {
           swAlert(<h2>Tu busqueda no arrojo resultados</h2>);
@@ -23,6 +26,8 @@ function Resultados() {
 
   return (
     <>
+      {!token && <Navigate to="/" />}
+
       <h2>Buscaste: {keyword}</h2>
       {moviesResults.length === 0 && <h3>No hay resultados.</h3>}
       <div className="row">

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Buscador from "./Buscador";
 
-function Header() {
+function Header(props) {
   return (
     <>
       <header>
@@ -18,6 +18,13 @@ function Header() {
             </li>
             <li>
               <Link to="/favoritos">Favs</Link>
+            </li>
+            <li>
+              <span>
+                {props.favorites.length > 0 && (
+                  <>Cantidad en favs: {props.favorites.length}</>
+                )}
+              </span>
             </li>
           </ul>
           <Buscador />
