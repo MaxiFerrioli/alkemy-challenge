@@ -2,7 +2,7 @@ import swAlert from "@sweetalert/with-react";
 import { useNavigate } from "react-router-dom";
 
 function Buscador() {
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();

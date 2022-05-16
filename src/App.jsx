@@ -59,6 +59,7 @@ function App() {
       let moviesLeft = tempMoviesInFavs.filter((oneMovie) => {
         return oneMovie.id !== movieData.id;
       });
+      
       localStorage.setItem("favs", JSON.stringify(moviesLeft));
       setFavorites(moviesLeft);
       console.log("Se elimino la peli");
