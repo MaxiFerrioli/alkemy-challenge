@@ -25,7 +25,7 @@ function Listado(props) {
         setMoviesList(apiData.results);
       })
       .catch(() =>
-        swAlert(<h2>Hubo errores, intenta mas tardepepeshito puto.</h2>)
+        swAlert(<h2>Hubo errores, intenta mas tarde.</h2>)
       );
   }, [setMoviesList]);
 
