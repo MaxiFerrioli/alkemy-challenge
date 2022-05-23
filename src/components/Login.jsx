@@ -47,7 +47,6 @@ function Login() {
   return (
     <>
       {token && <Navigate to="/listado" />}
-
       <h2>Formulario de ingreso</h2>
       <form onSubmit={submitHandler}>
         <label>
